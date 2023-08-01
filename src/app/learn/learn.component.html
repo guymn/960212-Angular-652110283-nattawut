@@ -1,5 +1,5 @@
 <div class="main vertical-center">
-  <div class="btn-group" role="group" aria-label="Button group with nested">
+  <div class="btn-group mb-0" role="group" aria-label="Button group with nested">
     <button
       [ngClass]="{ 'btn-outline-primary': !isEach, 'btn-primary': isEach }"
       type="button"
@@ -59,7 +59,8 @@
           </h4>
         </div>
         <div class="col-xs-12 col-md-3">
-          <h3 class="" style="width: 100%">
+          <i class="fa fa-thumbs-up" style="color: red; font-size: 30px;"></i>
+          <h3 class="" style="display: inline;">
             {{ findTrueChoice(q.choices) }}
           </h3>
         </div>
