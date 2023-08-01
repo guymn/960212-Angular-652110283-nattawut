@@ -1,0 +1,35 @@
+<div class="main vertical-center" *ngIf="isEnd">
+  <div class="container">
+    <h2 class="mb-1 mt-1">Quesions {{ currentQuestionIndex + 1 }} of 10</h2>
+    <div class="mb-4">
+      <h3>{{ question[currentQuestionIndex].text }}</h3>
+    </div>
+    <div class="text-center">
+      <img
+        [src]="question[currentQuestionIndex].image"
+        class="img-fluid rounded"
+        alt=""
+      />
+      <img
+        *ngIf="!question[currentQuestionIndex].image"
+        src="https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg"
+        alt=""
+        style="width: 200px; visibility: hidden;"
+      />
+    </div>
+    <div class="row">
+      <div
+        class="col-md-12 col-xl-6 g-2"
+        *ngFor="let choice of question[currentQuestionIndex].choices"
+      >
+        <button
+          style="width: 100%"
+          class="btn btn-primary"
+          (click)="onClickChoice(choice.isAnswer)"
+        >
+          {{ choice.text }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
