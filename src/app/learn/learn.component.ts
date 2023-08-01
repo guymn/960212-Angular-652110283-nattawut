@@ -15,8 +15,7 @@ export class LearnComponent {
   question: Question[];
 
   constructor() {
-    this.question = this.quizService.getQuizData();
-    this.question = this.getQuizDataNoImage(this.question);
+    this.question = this.quizService.getQuizDataNoImage();
     this.question.sort((a, b) => 0.5 - Math.random());
   }
   setEachQuestion() {
@@ -36,10 +35,5 @@ export class LearnComponent {
   }
   previousQuestion() {
     this.currentQuestionIndex--;
-  }
-  getQuizDataNoImage(questionAll: Question[]) {
-    return questionAll.filter((element, index) => {
-      return !element.image;
-    });
   }
 }

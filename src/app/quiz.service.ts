@@ -297,7 +297,12 @@ export class QuizService {
 
   constructor() {}
 
-  getQuizData(){
-    return this.quizData
+  getQuizData() {
+    return this.quizData;
+  }
+  getQuizDataNoImage() {
+    return this.quizData.filter((element, index) => {
+      return !element.image;
+    });
   }
 }
