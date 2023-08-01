@@ -16,18 +16,14 @@ export class LearnComponent {
 
   constructor() {
     this.question = this.quizService.getQuizData();
+    this.question = this.getQuizDataNoImage(this.question);
     this.question.sort((a, b) => 0.5 - Math.random());
-    this.question[this.currentQuestionIndex].choices.sort(
-      (a, b) => 0.5 - Math.random()
-    );
   }
   setEachQuestion() {
     this.isEach = true;
-    console.log('T');
   }
   setAllQuestion() {
     this.isEach = false;
-    console.log('F');
   }
   findTrueChoice(ch: Choice[]) {
     const answer = ch.find((element, index) => {
@@ -41,8 +37,8 @@ export class LearnComponent {
   previousQuestion() {
     this.currentQuestionIndex--;
   }
-  getQuizDataNoImage() {
-    return this.question.filter((element, index) => {
+  getQuizDataNoImage(questionAll: Question[]) {
+    return questionAll.filter((element, index) => {
       return !element.image;
     });
   }
