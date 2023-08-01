@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import Swal from 'sweetalert2';
 import { QuizService } from '../quiz.service';
-import { Question } from '../question';
+import { Choice, Question } from '../question';
 
 @Component({
   selector: 'app-quiz',
@@ -9,7 +9,6 @@ import { Question } from '../question';
   styleUrls: ['./quiz.component.css'],
 })
 export class QuizComponent {
-  audio = new Audio();
   quizService: QuizService = inject(QuizService);
 
   question: Question[];

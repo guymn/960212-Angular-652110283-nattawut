@@ -1,0 +1,82 @@
+<div class="main vertical-center">
+  <div class="btn-group" role="group" aria-label="Button group with nested">
+    <button
+      [ngClass]="{ 'btn-outline-primary': !isEach, 'btn-primary': isEach }"
+      type="button"
+      class="btn"
+      (click)="setEachQuestion()"
+    >
+      Each Question
+    </button>
+    <button
+      [ngClass]="{ 'btn-outline-primary': isEach, 'btn-primary': !isEach }"
+      type="button"
+      class="btn"
+      (click)="setAllQuestion()"
+    >
+      Quesion List
+    </button>
+  </div>
+  <div class="container">
+    <div *ngIf="isEach; else questionList">
+      <h2 class="mb-2 mt-2" style="text-align: center">
+        {{ currentQuestionIndex + 1 }} of 10
+      </h2>
+      <div class="mb-4">
+        <h3>Q: {{ question[currentQuestionIndex].text }}</h3>
+      </div>
+      <div class="mb-4">
+        <h3>A: {{ findTrueChoice(question[currentQuestionIndex].choices) }}</h3>
+      </div>
+      <div class="text-center">
+        <img
+          [src]="question[currentQuestionIndex].image"
+          class="img-fluid rounded"
+          alt=""
+        />
+        <img
+          *ngIf="!question[currentQuestionIndex].image"
+          src="https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg"
+          alt=""
+          style="width: 200px; visibility: hidden"
+        />
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-xl-6 g-2">
+          <button
+            style="width: 100%"
+            class="btn btn-primary"
+            [disabled]="currentQuestionIndex == 0"
+            (click)="previousQuestion()"
+          >
+            < Previous
+          </button>
+        </div>
+        <div class="col-md-12 col-xl-6 g-2">
+          <button
+            style="width: 100%"
+            class="btn btn-primary"
+            [disabled]="currentQuestionIndex + 1 == question.length"
+            (click)="nextQuestion()"
+          >
+            Next >
+          </button>
+        </div>
+      </div>
+    </div>
+    <ng-template #questionList>
+      <div class="row g-2 mt-2" *ngFor="let q of getQuizDataNoImage()">
+        <div class="col-xs-12 col-md-9">
+          <h4 class="" style="width: 100%">
+            {{ q.text }}
+          </h4>
+        </div>
+        <div class="col-xs-12 col-md-3">
+          <h3 class="" style="width: 100%">
+            {{ findTrueChoice(q.choices) }}
+          </h3>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
