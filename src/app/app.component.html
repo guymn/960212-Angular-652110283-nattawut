@@ -1,4 +1,4 @@
-<div class="main">
+<div class="">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <button
@@ -16,13 +16,36 @@
         <a class="navbar-brand" href="#">Quiz App</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a [routerLink]="['/']" class="nav-link active" aria-current="page" href="#">Quiz</a>
+            <a
+              [routerLink]="['/']"
+              [class.active]="activeMenu === 0"
+              class="nav-link"
+              (click)="onClickMenu(0)"
+              aria-current="page"
+              href="#"
+              >Quiz</a
+            >
           </li>
           <li class="nav-item">
-            <a [routerLink]="['/learn']"   class="nav-link" aria-current="page" href="#">Learn</a>
+            <a
+              [routerLink]="['/learn']"
+              [class.active]="activeMenu === 1"
+              class="nav-link"
+              (click)="onClickMenu(1)"
+              aria-current="page"
+              href="#"
+              >Learn</a
+            >
           </li>
           <li class="nav-item">
-            <a [routerLink]="['/about']" class="nav-link" href="./about/about.component.html">About</a>
+            <a
+              [routerLink]="['/about']"
+              [class.active]="activeMenu ===2"
+              class="nav-link"
+              (click)="onClickMenu(2)"
+              href="./about/about.component.html"
+              >About</a
+            >
           </li>
         </ul>
         <form class="d-flex" role="search">

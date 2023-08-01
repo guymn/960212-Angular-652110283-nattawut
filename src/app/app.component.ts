@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-    
+  activeMenu = 1;
+  onClickMenu(index: number) {
+    this.activeMenu = index;
+  }
 }
